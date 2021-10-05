@@ -6,8 +6,8 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Header("Player Movement")]
     public float horizontalForce;
-    public float boundMin;
-    public float boundMax;
+    public Boundaries bounds;
+
     [Range(0.0f, 0.99f)]
     public float decay;
 
@@ -38,14 +38,14 @@ public class PlayerBehaviour : MonoBehaviour
     private void CheckBounds()
     {
         // left bound
-        if (transform.position.x < boundMin)
+        if (transform.position.x < bounds.min)
         {
-            transform.position = new Vector3(boundMin, transform.position.y, 0.0f);
+            transform.position = new Vector3(bounds.min, transform.position.y, 0.0f);
         }
         // right bound
-        else if (transform.position.x > boundMax)
+        else if (transform.position.x > bounds.max)
         {
-            transform.position = new Vector3(boundMax, transform.position.y, 0.0f);
+            transform.position = new Vector3(bounds.max, transform.position.y, 0.0f);
         }
     }
 }
